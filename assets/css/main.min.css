@@ -12,3 +12,9 @@
   object-fit: cover;
   display: block;
 }
+.thumb img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
