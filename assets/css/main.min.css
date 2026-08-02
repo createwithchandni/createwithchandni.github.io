@@ -20,34 +20,37 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-/* 1. Make the main grid area a modern Flexbox row layout */
+/* 1. Set the grid layout wrapper to flex rows */
 #main {
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 15px !important; /* Perfect space between photos */
-  padding: 15px !important;
+  gap: 20px !important;
+  padding: 20px !important;
   width: 100% !important;
 }
 
-/* 2. Format the individual image container blocks */
+/* 2. Format the individual image block containers */
 #main .thumb {
-  flex: 1 1 calc(33.333% - 15px) !important; /* Creates 3 columns. Change 33.333% to 25% for 4 columns */
-  height: auto !important; /* Removes the fixed height that was cropping things */
-  max-width: calc(33.333% - 15px) !important;
+  flex: 1 1 calc(33.333% - 20px) !important; /* 3-column layout columns */
+  max-width: calc(33.333% - 20px) !important;
+  height: auto !important; 
 }
 
-/* 3. Re-enable the physical image element and bypass the background script conflict */
-#main .thumb .image img {
-  display: block !important; /* FORCES your hidden images to show up crisp and clean */
-  width: 100% !important;   /* Fills the column width perfectly */
-  height: auto !important;  /* Lets your vertical photos retain their natural height */
-  object-fit: contain !important; /* Ensures absolutely zero cropping happens */
-}
-
-/* 4. Turn off the broken background wrapper block */
+/* 3. FIX THE ZOOM: Force the wrapper link tag to match vertical dimensions */
 #main .thumb .image {
-  background-image: none !important; /* Removes the glitchy script-injected background */
   display: block !important;
   width: 100% !important;
   height: auto !important;
+  aspect-ratio: 225 / 360 !important; /* Forces a perfect vertical frame */
+  background-size: contain !important; /* Forces the injected background to fit nicely */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* 4. Ensure the physical picture fits without distortion or cropping */
+#main .thumb .image img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important; /* Shows 100% of your image files uncropped */
 }
