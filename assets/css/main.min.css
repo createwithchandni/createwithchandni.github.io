@@ -20,38 +20,37 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-/* 1. Set the main gallery container layout to Flexbox */
+/* 1. Reset the grid layout wrapper to flex rows */
 #main {
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 15px !important; /* Space between photos */
+  gap: 15px !important;
   padding: 15px !important;
   width: 100% !important;
 }
 
-/* 2. Tell the thumbnail boxes to stretch vertically and wrap tightly horizontally */
+/* 2. Format the individual grid block containers to a nice square ratio */
 #main .thumb {
-  display: flex !important;
-  flex: 1 0 auto !important; /* Allows rows to distribute evenly */
-  height: 400px !important;  /* Forces a standard uniform height for all rows */
-  width: auto !important;    /* Removes rigid column widths entirely */
-  margin: 0 !important;
+  flex: 1 1 calc(25% - 15px) !important; /* 4 columns. Change 25% to 33.333% for 3 columns */
+  max-width: calc(25% - 15px) !important;
+  height: 300px !important; /* Fixed height for neat rows */
+  background-color: #1a1a1a !important; /* Sleek dark background instead of harsh white space */
 }
 
-/* 3. Force the layout link wrapper to inherit the dynamic fluid width */
+/* 3. Center both vertical AND horizontal photos beautifully inside the frames */
 #main .thumb .image {
   display: block !important;
+  width: 100% !important;
   height: 100% !important;
-  width: auto !important;
-  background-size: cover !important; /* Forces the background image to seamlessly fill the frame */
-  background-position: center !important;
+  background-size: contain !important; /* Prevents zooming/cropping on ALL image types */
+  background-position: center center !important;
   background-repeat: no-repeat !important;
 }
 
-/* 4. Ensure the image scales seamlessly to match the fluid background container box */
+/* 4. Match the physical image behavior */
 #main .thumb .image img {
   display: block !important;
+  width: 100% !important;
   height: 100% !important;
-  width: auto !important;
-  object-fit: cover !important; /* Fills the tight box seamlessly without stretching or distortion */
+  object-fit: contain !important; /* Keeps horizontal and vertical layouts 100% uncropped */
 }
