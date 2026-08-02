@@ -27,7 +27,7 @@
   gap: 10px !important;
   padding: 10px !important;
   width: 100% !important;
-  background: transparent !important; /* Seamless blending */
+  background: transparent !important;
 }
 
 /* 2. Individual Grid Containers on Mobile */
@@ -35,10 +35,18 @@
   flex: 1 1 calc(50% - 10px) !important;
   max-width: calc(50% - 10px) !important;
   height: 250px !important;
-  background-color: transparent !important; /* REMOVES THE WHITE SPACE BLOCKS ENTIRELY */
+  background-color: transparent !important;
   background: transparent !important;
   margin: 0 !important;
-  box-shadow: none !important; /* Removes any default white borders or shadow effects */
+  box-shadow: none !important;
+}
+
+/* REMOVE THE GLASS OVERLAY TINT EFFECT FROM EMPTY SPACES */
+#main .thumb::before, #main .thumb::after,
+#main .thumb .image::before, #main .thumb .image::after {
+  display: none !important;
+  background: transparent !important;
+  background-image: none !important;
 }
 
 /* 3. Handle the Image Wrappers */
@@ -46,10 +54,10 @@
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  background-size: contain !important; /* Keeps 100% of horizontal & vertical images visible */
+  background-size: contain !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-color: transparent !important; /* Forces transparency on the link block */
+  background-color: transparent !important;
 }
 
 #main .thumb .image img {
@@ -57,7 +65,7 @@
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
-  background: transparent !important; /* Guarantees the image asset background doesn't default to white */
+  background: transparent !important;
 }
 
 /* 4. Desktop Screens Override (Switches to 4 Columns automatically) */
