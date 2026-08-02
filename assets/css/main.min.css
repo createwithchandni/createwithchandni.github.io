@@ -20,23 +20,25 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-* 1. Base Grid Layout (Mobile First: 2 Columns) */
+/* 1. Base Grid Layout (Mobile First: 2 Columns) */
 #main {
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 10px !important;
   padding: 10px !important;
   width: 100% !important;
-  background: #111111 !important; /* Makes the overall page background dark */
+  background: transparent !important; /* Seamless blending */
 }
 
-/* 2. Individual Grid Containers on Mobile (Bigger and readable) */
+/* 2. Individual Grid Containers on Mobile */
 #main .thumb {
-  flex: 1 1 calc(50% - 10px) !important; /* 2 columns on mobile screens */
+  flex: 1 1 calc(50% - 10px) !important;
   max-width: calc(50% - 10px) !important;
-  height: 250px !important; /* Good height for mobile phones */
-  background-color: #1a1a1a !important; /* Dark sleek frame background (No white space) */
+  height: 250px !important;
+  background-color: transparent !important; /* REMOVES THE WHITE SPACE BLOCKS ENTIRELY */
+  background: transparent !important;
   margin: 0 !important;
+  box-shadow: none !important; /* Removes any default white borders or shadow effects */
 }
 
 /* 3. Handle the Image Wrappers */
@@ -44,9 +46,10 @@
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  background-size: contain !important; /* Keeps 100% of both horizontal and vertical images visible */
+  background-size: contain !important; /* Keeps 100% of horizontal & vertical images visible */
   background-position: center !important;
   background-repeat: no-repeat !important;
+  background-color: transparent !important; /* Forces transparency on the link block */
 }
 
 #main .thumb .image img {
@@ -54,6 +57,7 @@
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
+  background: transparent !important; /* Guarantees the image asset background doesn't default to white */
 }
 
 /* 4. Desktop Screens Override (Switches to 4 Columns automatically) */
@@ -63,8 +67,8 @@
     padding: 20px !important;
   }
   #main .thumb {
-    flex: 1 1 calc(25% - 20px) !important; /* 4 columns on desktop computers */
+    flex: 1 1 calc(25% - 20px) !important;
     max-width: calc(25% - 20px) !important;
-    height: 350px !important; /* Taller height suited for desktops */
+    height: 350px !important;
   }
 }
