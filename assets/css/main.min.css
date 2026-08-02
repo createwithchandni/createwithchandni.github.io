@@ -20,37 +20,51 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-/* 1. Reset the grid layout wrapper to flex rows */
+* 1. Base Grid Layout (Mobile First: 2 Columns) */
 #main {
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 15px !important;
-  padding: 15px !important;
+  gap: 10px !important;
+  padding: 10px !important;
   width: 100% !important;
+  background: #111111 !important; /* Makes the overall page background dark */
 }
 
-/* 2. Format the individual grid block containers to a nice square ratio */
+/* 2. Individual Grid Containers on Mobile (Bigger and readable) */
 #main .thumb {
-  flex: 1 1 calc(25% - 15px) !important; /* 4 columns. Change 25% to 33.333% for 3 columns */
-  max-width: calc(25% - 15px) !important;
-  height: 300px !important; /* Fixed height for neat rows */
-  background-color: #1a1a1a !important; /* Sleek dark background instead of harsh white space */
+  flex: 1 1 calc(50% - 10px) !important; /* 2 columns on mobile screens */
+  max-width: calc(50% - 10px) !important;
+  height: 250px !important; /* Good height for mobile phones */
+  background-color: #1a1a1a !important; /* Dark sleek frame background (No white space) */
+  margin: 0 !important;
 }
 
-/* 3. Center both vertical AND horizontal photos beautifully inside the frames */
+/* 3. Handle the Image Wrappers */
 #main .thumb .image {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  background-size: contain !important; /* Prevents zooming/cropping on ALL image types */
-  background-position: center center !important;
+  background-size: contain !important; /* Keeps 100% of both horizontal and vertical images visible */
+  background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
-/* 4. Match the physical image behavior */
 #main .thumb .image img {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important; /* Keeps horizontal and vertical layouts 100% uncropped */
+  object-fit: contain !important;
+}
+
+/* 4. Desktop Screens Override (Switches to 4 Columns automatically) */
+@media screen and (min-width: 768px) {
+  #main {
+    gap: 20px !important;
+    padding: 20px !important;
+  }
+  #main .thumb {
+    flex: 1 1 calc(25% - 20px) !important; /* 4 columns on desktop computers */
+    max-width: calc(25% - 20px) !important;
+    height: 350px !important; /* Taller height suited for desktops */
+  }
 }
