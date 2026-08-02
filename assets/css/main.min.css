@@ -20,19 +20,28 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-/* Tell the layout grid boxes to automatically match your exact image shapes */
+* Convert the gallery grid into a clean, professional Masonry column layout */
+#main {
+  display: block !important;
+  column-count: 3 !important;       /* Number of vertical photo columns. Change to 4 if you want them smaller */
+  column-gap: 20px !important;      /* Even spacing between the columns */
+  width: 100% !important;
+  padding: 20px !important;
+}
+
 #main .thumb {
-  width: calc(25% - 20px) !important; /* Adjust columns (25% = 4 columns, 33% = 3 columns) */
-  height: auto !important;            /* Remove the fixed height restriction entirely */
+  display: inline-block !important; /* Forces items to stack inside their columns */
+  width: 100% !important;           /* Makes the box fill the column perfectly */
+  margin-bottom: 20px !important;   /* Spacing between vertical photos */
+  height: auto !important;          /* Removes rigid row limits completely */
 }
 
 #main .thumb .image {
   display: block !important;
   width: 100% !important;
-  height: auto !important;            /* Let the container's height scale naturally */
-  aspect-ratio: 225 / 360 !important; /* Forces the box to hold a perfect vertical portrait frame */
-  background-size: contain !important; /* Shows 100% of your photo with zero cropping */
-  background-position: center !important;
+  height: auto !important;          /* Lets the height match the photo naturally */
+  aspect-ratio: auto !important;    /* Removes fixed shapes */
+  background-size: contain !important; 
+  background-position: top center !important;
   background-repeat: no-repeat !important;
-  background-color: transparent !important; /* Removes the white/gray background block entirely */
 }
