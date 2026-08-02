@@ -22,7 +22,7 @@
 
 /* Force the dynamic layout background boxes to match vertical aspect ratios */
 #main .thumb .image {
-  background-size: contain !important;
+  background-size: cover !important; /* CHANGED FROM contain TO cover */
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-color: #f4f4f4 !important;
