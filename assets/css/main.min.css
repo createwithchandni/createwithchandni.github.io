@@ -20,15 +20,19 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-/* Force the dynamic layout background boxes to match vertical aspect ratios */
-#main .thumb .image {
-  background-size: cover !important; /* CHANGED FROM contain TO cover */
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-color: #f4f4f4 !important;
-}
-
+/* Tell the layout grid boxes to automatically match your exact image shapes */
 #main .thumb {
-  height: 450px !important; /* Forces the box container to be tall instead of wide */
+  width: calc(25% - 20px) !important; /* Adjust columns (25% = 4 columns, 33% = 3 columns) */
+  height: auto !important;            /* Remove the fixed height restriction entirely */
 }
 
+#main .thumb .image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;            /* Let the container's height scale naturally */
+  aspect-ratio: 225 / 360 !important; /* Forces the box to hold a perfect vertical portrait frame */
+  background-size: contain !important; /* Shows 100% of your photo with zero cropping */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important; /* Removes the white/gray background block entirely */
+}
