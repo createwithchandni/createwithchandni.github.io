@@ -20,37 +20,38 @@
   display: none; /* Keeps the raw, hidden image from interfering */
 }
 
-/* 1. Set the grid layout wrapper to flex rows */
+/* 1. Set the main gallery container layout to Flexbox */
 #main {
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 20px !important;
-  padding: 20px !important;
+  gap: 15px !important; /* Space between photos */
+  padding: 15px !important;
   width: 100% !important;
 }
 
-/* 2. Format the individual image block containers */
+/* 2. Tell the thumbnail boxes to stretch vertically and wrap tightly horizontally */
 #main .thumb {
-  flex: 1 1 calc(33.333% - 20px) !important; /* 3-column layout columns */
-  max-width: calc(33.333% - 20px) !important;
-  height: auto !important; 
+  display: flex !important;
+  flex: 1 0 auto !important; /* Allows rows to distribute evenly */
+  height: 400px !important;  /* Forces a standard uniform height for all rows */
+  width: auto !important;    /* Removes rigid column widths entirely */
+  margin: 0 !important;
 }
 
-/* 3. FIX THE ZOOM: Force the wrapper link tag to match vertical dimensions */
+/* 3. Force the layout link wrapper to inherit the dynamic fluid width */
 #main .thumb .image {
   display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 225 / 360 !important; /* Forces a perfect vertical frame */
-  background-size: contain !important; /* Forces the injected background to fit nicely */
+  height: 100% !important;
+  width: auto !important;
+  background-size: cover !important; /* Forces the background image to seamlessly fill the frame */
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
-/* 4. Ensure the physical picture fits without distortion or cropping */
+/* 4. Ensure the image scales seamlessly to match the fluid background container box */
 #main .thumb .image img {
   display: block !important;
-  width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important; /* Shows 100% of your image files uncropped */
+  width: auto !important;
+  object-fit: cover !important; /* Fills the tight box seamlessly without stretching or distortion */
 }
